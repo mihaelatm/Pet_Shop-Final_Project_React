@@ -6,7 +6,7 @@ import Categories from "./pages/Categories";
 import AllProducts from "./pages/AllProducts";
 import DiscountItems from "./pages/DiscountItems";
 import Cart from "./pages/Cart";
-// import Footer from "./layouts/Footer";
+import Footer from "./layouts/Footer/Footer";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
 
         {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
