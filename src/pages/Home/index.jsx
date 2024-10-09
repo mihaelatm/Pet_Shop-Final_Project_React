@@ -1,7 +1,13 @@
+import Banner from "../../components/Banner";
+import CategoryList from "../../components/CategoryList";
+import Item from "../../components/Item";
+
 function Home() {
   return (
     <>
-      <h1>This is a Home page</h1>
+      <Banner />
+      <Item title="Categories" name="All Categories" link="/categories" />
+      <CategoryList />
     </>
   );
 }

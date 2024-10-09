@@ -1,0 +1,27 @@
+.banner {
+  background-image: url("../../assets/images/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.banner_content {
+  padding: 80px 40px;
+}
+
+.banner_title {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.banner_button {
+  background-color: #0d50ff;
+  color: #fff;
+  width: 200px;
+  height: 56px;
+}
