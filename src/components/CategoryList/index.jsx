@@ -30,22 +30,25 @@ function CategoryList() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <section className={styles.categories_content}>
-      <ul className={styles.categories_list}>
-        {items.map(({ id, image, title }) => (
-          <li key={id} className={styles.category_item}>
-            <Link to={`/categories/${id}`} className={styles.category_link}>
-              <img
-                src={`http://localhost:3333${image}`}
-                alt={title}
-                className={styles.category_image}
-              />
-              <h4 className={styles.category_title}>{title}</h4>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <Item title="Categories" name="All Categories" link="/categories" />
+      <section className={styles.categories_content}>
+        <ul className={styles.categories_list}>
+          {items.map(({ id, image, title }) => (
+            <li key={id} className={styles.category_item}>
+              <Link to={`/categories/${id}`} className={styles.category_link}>
+                <img
+                  src={`http://localhost:3333${image}`}
+                  alt={title}
+                  className={styles.category_image}
+                />
+                <h4 className={styles.category_title}>{title}</h4>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }
 

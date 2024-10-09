@@ -1,0 +1,31 @@
+.sales_banner {
+  padding: 0 40px;
+  display: flex;
+  margin-bottom: 82px;
+}
+.banner_title {
+  text-align: center;
+  color: #fff;
+}
+
+.sales_banner_content {
+  border-radius: 12px;
+  padding: 32px 32px 0px 32px;
+  width: 1395px;
+  height: 486px;
+  background: linear-gradient(220deg, #2451c6 0%, #0d50ff 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.banner_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.banner_img {
+  width: 100%;
+  display: flex;
+}
