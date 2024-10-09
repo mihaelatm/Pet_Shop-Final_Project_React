@@ -17,9 +17,8 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:id" element={<Categories />} />
         <Route path="/products" element={<AllProducts />} />
-        <Route path="/sales" element={<DiscountItems />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/discounts" element={<DiscountItems />} />
+        <Route path="/cart" element={<Cart />} />
 
         {/* <Route path="*" element={<ErrorPage />} /> */}
       </Routes>

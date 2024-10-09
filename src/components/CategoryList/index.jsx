@@ -10,7 +10,7 @@ function CategoryList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchCategories = async () => {
       try {
         const response = await axios.get(
           "http://localhost:3333/categories/all"
@@ -23,7 +23,7 @@ function CategoryList() {
       }
     };
 
-    fetchProducts();
+    fetchCategories();
   }, []);
 
   if (loading) return <div>Loading...</div>;
@@ -36,7 +36,7 @@ function CategoryList() {
         <ul className={styles.categories_list}>
           {items.map(({ id, image, title }) => (
             <li key={id} className={styles.category_item}>
-              <Link to={`/categories/${id}`} className={styles.category_link}>
+              <Link to="/categories" className={styles.category_link}>
                 <img
                   src={`http://localhost:3333${image}`}
                   alt={title}
