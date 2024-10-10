@@ -1,13 +1,14 @@
-import { Button, Form } from "antd";
+import { Form } from "antd";
 import InputEmail from "../../ui/inputEmail";
 import InputName from "../../ui/inputName";
 import InputPhone from "../../ui/inputPhone";
 import styles from "./styles.module.css";
 import axios from "axios";
-import NotificationHandler from "../NotificationHandler";
+import { useState } from "react";
 
 function FormDiscount() {
   const [form] = Form.useForm();
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const onFinish = async (values) => {
     console.log("Received values from form: ", values);
@@ -20,18 +21,10 @@ function FormDiscount() {
       });
 
       if (response.status === 200) {
-        NotificationHandler.success(
-          "Discount Received",
-          `You have received a discount at the email: ${values.email}`
-        );
-
         form.resetFields();
+        setIsSubmitted(true);
       }
     } catch (error) {
-      NotificationHandler.error(
-        "Request Failed",
-        "There was an error processing your request. Please try again."
-      );
       console.error("Error submitting form: ", error);
     }
   };
@@ -43,9 +36,12 @@ function FormDiscount() {
         <InputPhone />
         <InputEmail />
       </div>
-      <Button type="default" htmlType="submit" className={styles.button}>
-        Get a discount
-      </Button>
+      <button
+        className={`${styles.button} ${isSubmitted ? styles.submitted : ""}`}
+        disabled={isSubmitted}
+      >
+        {isSubmitted ? "Request submitted" : "Get a discount"}
+      </button>
     </Form>
   );
 }

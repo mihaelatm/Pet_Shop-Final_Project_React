@@ -1,0 +1,32 @@
+.button_container {
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.button_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.button_link {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.26;
+  color: #8b8b8b;
+  cursor: pointer;
+}
+
+.line {
+  width: 16px;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.active_button {
+  color: #282828;
+}
