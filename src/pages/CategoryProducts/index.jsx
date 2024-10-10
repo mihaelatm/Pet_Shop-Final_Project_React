@@ -2,10 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Buttons from "../../components/Buttons";
-import Filter from "../../ui/filter";
+import Filter from "../../components/Filter";
 
 function CategoryProducts() {
   const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,7 +15,7 @@ function CategoryProducts() {
       try {
         const response = await axios.get("http://localhost:3333/products/all");
         setItems(response.data.slice(0, 8));
-        console.log("Fetched products:", response.data); // Verificăm produsele primite
+        setFilteredItems(response.data.slice(0, 8));
       } catch (error) {
         setError(error.message);
       } finally {
@@ -31,17 +32,18 @@ function CategoryProducts() {
     <section className={styles.categories_content}>
       <Buttons
         buttons={[
-          { link: "/", text: "Main Home" },
+          { link: "/", text: "Main Page" },
           { link: "/categories", text: "Categories" },
           { link: "/categories/products", text: "Dry & Wet Food" },
         ]}
       />
       <h2 className={styles.categories_title}>Dry & Wet Food</h2>
 
-      <Filter />
+      {/* Integrează componenta Filter */}
+      <Filter items={items} setFilteredItems={setFilteredItems} />
 
       <ul className={styles.categories_list}>
-        {items.map(({ id, image, title, discont_price, price }) => {
+        {filteredItems.map(({ id, image, title, discont_price, price }) => {
           const discountPercentage =
             discont_price != null && price
               ? Math.round(((price - discont_price) / price) * 100)

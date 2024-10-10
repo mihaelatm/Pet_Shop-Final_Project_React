@@ -16,17 +16,3 @@ span {
   gap: 16px;
   align-items: center;
 }
-
-.input {
-  width: 112px;
-  height: 36px;
-}
-
-.select {
-  width: 200px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.26;
-  color: #282828;
-  font-family: "Montserrat", sans-serif;
-}
