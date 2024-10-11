@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlices";
@@ -6,6 +6,8 @@ import useFetchData from "../../utils/useFetchData"; // Importăm hook-ul
 import styles from "./styles.module.css";
 import LinksBtn from "../../ui/LinksBtn";
 import AddToCartButton from "../../components/addToCartButton";
+import QuantityCounter from "../../components/QuantityCounter";
+import ProductDescription from "../../components/ProductDescription";
 
 const Product = () => {
   const { id } = useParams();
@@ -14,9 +16,9 @@ const Product = () => {
     data: product,
     loading,
     error,
-  } = useFetchData("http://localhost:3333/products/all"); // Folosim hook-ul
+  } = useFetchData("http://localhost:3333/products/all");
+  const [count, setCount] = useState(1);
 
-  // Căutăm produsul specific după ID
   const foundProduct = product.find((item) => item.id === parseInt(id));
 
   if (loading) return <p>Loading...</p>;
@@ -34,6 +36,10 @@ const Product = () => {
     dispatch(addToCart({ id, image, title, discont_price, price }));
   };
 
+  const handleCountChange = (newCount) => {
+    setCount(newCount);
+  };
+
   return (
     <section className={styles.product_page}>
       <LinksBtn
@@ -46,37 +52,37 @@ const Product = () => {
       />
 
       <div className={styles.product_container}>
-        <div className={styles.product}>
-          <div className={styles.image_container}>
-            <img
-              src={`http://localhost:3333${image}`}
-              alt={title}
-              className={styles.product_image}
+        <div className={styles.image_container}>
+          <img
+            src={`http://localhost:3333${image}`}
+            alt={title}
+            className={styles.product_image}
+          />
+        </div>
+
+        <div className={styles.product_info}>
+          <h3 className={styles.product_title}>{title}</h3>
+          <div className={styles.price_container}>
+            <p className={styles.price}>${price}</p>
+            {discont_price && (
+              <p className={styles.discount_price}>${discont_price}</p>
+            )}
+            {discountPercentage > 0 && (
+              <div className={styles.discount_percentage}>
+                -{discountPercentage}%
+              </div>
+            )}
+          </div>
+
+          <div className={styles.quantity_container}>
+            <QuantityCounter onCountChange={handleCountChange} />
+            <AddToCartButton
+              onClick={handleAddToCart}
+              className={styles.button_add_to_cart}
             />
-            <div className={styles.info_container}>
-              {/* Păstrează informațiile despre discount aici dacă dorești */}
-            </div>
           </div>
-          <div className={styles.product_info}>
-            <h3 className={styles.product_title}>{title}</h3>
-            <div className={styles.price_container}>
-              <p className={styles.price}>${price}</p>
-              {discont_price && (
-                <p className={styles.discount_price}>${discont_price}</p>
-              )}
-              {discountPercentage > 0 && (
-                <div className={styles.discount_percentage}>
-                  -{discountPercentage}%
-                </div>
-              )}
-            </div>
-            <p className={styles.productDescription}>
-              <span className={styles.description_label}>Description:</span>{" "}
-              <br />
-              <span className={styles.description_text}>{description}</span>
-            </p>
-            <AddToCartButton onClick={handleAddToCart} />
-          </div>
+
+          <ProductDescription description={description} />
         </div>
       </div>
     </section>

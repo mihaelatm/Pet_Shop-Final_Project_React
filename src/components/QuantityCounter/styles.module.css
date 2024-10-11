@@ -1,0 +1,15 @@
+.quantity_button {
+  background-color: #cecece;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  width: 30px;
+  height: 58px;
+  font-size: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.quantity_count {
+  font-size: 25px;
+}
