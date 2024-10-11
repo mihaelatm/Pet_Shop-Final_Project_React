@@ -32,7 +32,12 @@ function SalesList() {
 
   return (
     <>
-      <Item title="Sales" name="All Sales" link="/sales" />
+      <Item
+        title="Sales"
+        name="All Sales"
+        link="/sales"
+        style={{ width: "100%", marginLeft: "32px" }}
+      />
       <section className={styles.categories_content}>
         <ul className={styles.categories_list}>
           {filteredItems.map(({ id, image, title, discont_price, price }) => {

@@ -21,7 +21,7 @@ const QuantityCounter = ({ onCountChange }) => {
   };
 
   return (
-    <div className={styles.quantity_buttons}>
+    <div className={styles.counter}>
       <button onClick={decrementCount} className={styles.quantity_button}>
         -
       </button>

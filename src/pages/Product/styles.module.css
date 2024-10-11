@@ -80,7 +80,7 @@
 
 .quantity_container {
   display: flex;
-  gap: 156px;
+  gap: 60px;
   align-items: center;
   padding-bottom: 32px;
 }

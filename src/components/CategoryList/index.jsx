@@ -31,7 +31,12 @@ function CategoryList() {
 
   return (
     <>
-      <Item title="Categories" name="All Categories" link="/categories" />
+      <Item
+        title="Categories"
+        name="All Categories"
+        link="/categories"
+        style={{ width: "100%", marginLeft: "32px" }}
+      />
       <section className={styles.categories_content}>
         <ul className={styles.categories_list}>
           {items.map(({ id, image, title }) => (

@@ -1,15 +1,32 @@
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
 .quantity_button {
-  background-color: #cecece;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #000000;
-  border: none;
   border-radius: 5px;
-  width: 30px;
+  width: 58px;
   height: 58px;
   font-size: 30px;
   cursor: pointer;
-  margin: 10px;
+  background-color: transparent;
+  border: none;
 }
 
 .quantity_count {
-  font-size: 25px;
+  width: 96px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  height: 58px;
 }
