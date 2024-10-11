@@ -1,24 +1,30 @@
+// components/Cart.js
 import React from "react";
 import { useSelector } from "react-redux";
-import addToCart from "../../redux/slices/cartSlices";
+import { selectCartItems } from "../../redux/slices/cartSlices"; // Importul selectorului
 
-const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items);
+function Cart() {
+  const cartItems = useSelector(selectCartItems); // Obținem produsele din coș
 
   return (
-    <div>
+    <section>
       <h2>Your Cart</h2>
       {cartItems.length === 0 ? (
-        <p>No items in the cart</p>
+        <p>Your cart is empty.</p>
       ) : (
         <ul>
-          {cartItems.map((item, index) => (
-            <li key={index}>{item.title}</li>
+          {cartItems.map((item) => (
+            <li key={item.id}>
+              <img src={item.image} alt={item.title} />
+              <h4>{item.title}</h4>
+              <p>Price: ${item.price}</p>
+              <p>Discounted Price: ${item.discont_price}</p>
+            </li>
           ))}
         </ul>
       )}
-    </div>
+    </section>
   );
-};
+}
 
 export default Cart;

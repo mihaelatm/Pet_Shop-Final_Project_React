@@ -58,8 +58,7 @@ function Header() {
             <img src={cart_icon} alt="Cart" />
             {totalItems > 0 && (
               <span className={styles.cart_count}>{totalItems}</span>
-            )}{" "}
-            {/* Afișează numărul total de produse */}
+            )}
           </NavLink>
         </div>
       </div>
