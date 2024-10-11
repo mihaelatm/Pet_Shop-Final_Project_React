@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import CategoryProducts from "./pages/CategoryProducts";
 import DiscountItems from "./pages/DiscountItems";
-// import AllProducts from "./pages/AllProducts";
+import AllProducts from "./pages/AllProducts";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 
@@ -19,6 +19,7 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/products" element={<CategoryProducts />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/products/all" element={<AllProducts />} />
         <Route path="/sales" element={<DiscountItems />} />
         <Route path="/cart" element={<Cart />} />
 

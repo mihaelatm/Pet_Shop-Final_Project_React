@@ -22,7 +22,6 @@ function DiscountItems() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  // Filtrarea produselor pentru a obține doar cele cu discont_price
   const discountedItems = (
     filteredItems.length > 0 ? filteredItems : items
   ).filter((item) => item.discont_price != null);
@@ -37,12 +36,11 @@ function DiscountItems() {
       <LinksBtn
         buttons={[
           { link: "/", text: "Main Page" },
-          { link: "/categories", text: "Categories" },
-          { link: "/categories/products", text: "Dry & Wet Food" },
+          { link: "/sales", text: "All Sales" },
         ]}
       />
 
-      <h2 className={styles.categories_title}>Dry & Wet Food</h2>
+      <h2 className={styles.categories_title}>Discounted items</h2>
 
       <Filter items={items} setFilteredItems={setFilteredItems} />
 
