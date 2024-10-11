@@ -43,7 +43,7 @@ function SalesList() {
 
             return (
               <li key={id} className={styles.category_item}>
-                <Link to="/discounts" className={styles.category_link}>
+                <Link to="/sales" className={styles.category_link}>
                   <div className={styles.image_container}>
                     <img
                       src={`http://localhost:3333${image}`}

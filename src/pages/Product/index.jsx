@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlices";
-import useFetchData from "../../utils/useFetchData"; // Importăm hook-ul
+import useFetchData from "../../utils/useFetchData";
 import styles from "./styles.module.css";
 import LinksBtn from "../../ui/LinksBtn";
-import AddToCartButton from "../../components/addToCartButton";
+import AddToCartButton from "../../ui/addToCartButton";
 import QuantityCounter from "../../components/QuantityCounter";
 import ProductDescription from "../../components/ProductDescription";
 

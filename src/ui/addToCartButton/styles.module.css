@@ -17,10 +17,6 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.action_button {
-  /* display: none; Ascuns implicit */
-}
-
 .action_button:hover {
   background-color: #282828;
 }

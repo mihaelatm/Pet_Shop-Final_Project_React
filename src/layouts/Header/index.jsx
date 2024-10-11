@@ -2,9 +2,8 @@ import styles from "./styles.module.css";
 import logo_icon from "../../assets/icons/logo_icon.svg";
 import { NavLink } from "react-router-dom";
 import cart_icon from "../../assets/icons/cart_icon.svg";
-import { useSelector } from "react-redux"; // Importă useSelector
+import { useSelector } from "react-redux";
 import { selectTotalItems } from "../../redux/slices/cartSlices";
-// Importă selectorul totalItems
 
 function Header() {
   const totalItems = useSelector(selectTotalItems);
@@ -37,7 +36,7 @@ function Header() {
             Categories
           </NavLink>
           <NavLink
-            to="/products"
+            to="/products/all"
             className={({ isActive }) =>
               isActive ? styles.active_link : styles.nav_link
             }

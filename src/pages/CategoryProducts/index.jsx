@@ -4,7 +4,7 @@ import Filter from "../../components/Filter";
 import LinksBtn from "../../ui/LinksBtn";
 import useFetchData from "../../utils/useFetchData";
 import { Link } from "react-router-dom";
-import AddToCartButton from "../../components/addToCartButton";
+import AddToCartButton from "../../ui/addToCartButton";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlices";
 
@@ -78,6 +78,12 @@ function CategoryProducts() {
                     onClick={() =>
                       handleAddToCart(id, image, title, discont_price, price)
                     }
+                    style={{
+                      position: "absolute",
+                      bottom: "16px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                    }}
                   />
                 )}
               </div>
