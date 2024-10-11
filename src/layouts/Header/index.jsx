@@ -2,8 +2,13 @@ import styles from "./styles.module.css";
 import logo_icon from "../../assets/icons/logo_icon.svg";
 import { NavLink } from "react-router-dom";
 import cart_icon from "../../assets/icons/cart_icon.svg";
+import { useSelector } from "react-redux"; // Importă useSelector
+import { selectTotalItems } from "../../redux/slices/cartSlices";
+// Importă selectorul totalItems
 
 function Header() {
+  const totalItems = useSelector(selectTotalItems);
+
   return (
     <header className={styles.header}>
       <div className={styles.content}>
@@ -51,7 +56,11 @@ function Header() {
 
         <div>
           <NavLink to="/cart">
-            <img src={cart_icon} alt="Logo" />
+            <img src={cart_icon} alt="Cart" />
+            {totalItems > 0 && (
+              <span className={styles.cart_count}>{totalItems}</span>
+            )}{" "}
+            {/* Afișează numărul total de produse */}
           </NavLink>
         </div>
       </div>

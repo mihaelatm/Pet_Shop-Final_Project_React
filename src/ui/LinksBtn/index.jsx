@@ -1,23 +1,23 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./styles.module.css";
 
-const Buttons = ({ buttons }) => {
+const LinksBtn = ({ buttons }) => {
   const location = useLocation();
 
   return (
     <div className={styles.button_container}>
-      {buttons.map((button, index) => {
-        const isActive = location.pathname === button.link;
+      {buttons.map((btn, index) => {
+        const isActive = location.pathname === btn.link;
 
         return (
           <div key={index} className={styles.button_wrapper}>
             <Link
-              to={button.link}
+              to={btn.link}
               className={`${styles.button_link} ${
                 isActive ? styles.active_button : ""
               }`}
             >
-              {button.text}
+              {btn.text}
             </Link>
             {index < buttons.length - 1 && <div className={styles.line}></div>}
           </div>
@@ -27,4 +27,4 @@ const Buttons = ({ buttons }) => {
   );
 };
 
-export default Buttons;
+export default LinksBtn;

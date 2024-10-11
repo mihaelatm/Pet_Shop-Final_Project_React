@@ -13,7 +13,6 @@ function SalesList() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:3333/products/all");
-        console.log(response.data); // Verifică ce se returnează
         setItems(response.data);
       } catch (error) {
         setError(error.message);
@@ -30,8 +29,6 @@ function SalesList() {
   const filteredItems = items.filter((item) =>
     [9, 12, 15, 16].includes(item.id)
   );
-
-  console.log("Filtered Items: ", filteredItems);
 
   return (
     <>

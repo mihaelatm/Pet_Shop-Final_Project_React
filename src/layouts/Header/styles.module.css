@@ -33,3 +33,14 @@
   color: #0d50ff;
   text-decoration: none;
 }
+
+.cart_count {
+  position: absolute;
+  top: 0; /* Ajustează în funcție de design */
+  right: 0; /* Ajustează în funcție de design */
+  background-color: red; /* Culoare de fundal pentru a evidenția numărul */
+  color: white; /* Culoarea textului */
+  border-radius: 50%; /* Face-l rotund */
+  padding: 0.25em 0.5em; /* Spațiere pentru număr */
+  font-size: 0.75em; /* Dimensiunea fontului */
+}

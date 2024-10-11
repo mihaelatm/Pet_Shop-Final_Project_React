@@ -8,6 +8,7 @@
   grid-template-columns: repeat(4, 316px);
   justify-content: space-between;
   margin-top: 40px;
+  gap: 32px;
 }
 
 .category_item {
@@ -52,11 +53,19 @@
   padding: 16px 32px 32px 32px;
 }
 
-.discount_price {
+.price {
   font-size: 40px;
   font-weight: 600;
   line-height: 1.1;
   color: #282828;
+}
+
+.discount_price {
+  color: #8b8b8b;
+  text-decoration: line-through;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
 }
 
 @keyframes heartbeat {
@@ -84,10 +93,23 @@
   animation: heartbeat 1s infinite;
 }
 
-.price {
-  text-decoration: line-through;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.3;
-  color: #8b8b8b;
+.image_container {
+  position: relative; /* Necesare pentru a poziționa butonul absolut */
+}
+
+.action_button {
+  position: absolute; /* Poziționare absolută pentru a plasa butonul pe imagine */
+  bottom: 10px; /* Ajustează pentru a schimba distanța de la marginea imaginii */
+  left: 50%;
+  transform: translateX(-50%); /* Centrare pe axa orizontală */
+  background-color: rgba(255, 255, 255, 0.8); /* Fundal semi-transparent */
+  border: none; /* Fără border */
+  border-radius: 5px; /* Colțuri rotunjite */
+  padding: 8px 16px; /* Spațiu interior */
+  cursor: pointer; /* Schimbă cursorul când treci peste buton */
+  transition: background-color 0.3s; /* Tranziție pentru fundal */
+}
+
+.action_button:hover {
+  background-color: rgba(255, 255, 255, 1); /* Fundal mai opac la hover */
 }
