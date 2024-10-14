@@ -27,6 +27,7 @@
   width: 780px;
   height: 180px;
   overflow: hidden;
+  position: relative;
 }
 
 .cart_image {
@@ -36,7 +37,13 @@
   border-right: 1px solid #ddd;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  border-right: 1px solid #ddd;
+}
+
+.cart_title_icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .cart_title {
@@ -44,13 +51,22 @@
   font-weight: 500;
   line-height: 1.3;
   color: #282828;
-  margin-bottom: 32px;
+  text-overflow: ellipsis;
 }
 
-.cart_price {
+.remove_icon {
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  top: 32px;
+  right: 32px;
+}
+
+.cart_info {
   display: flex;
   gap: 32px;
   align-items: center;
+  margin-top: 32px;
 }
 
 .price_container {

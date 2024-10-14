@@ -1,18 +1,32 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import ButtonLink from "../../ui/buttonLink";
 import Item from "../../components/Item";
-import { selectCartItems } from "../../redux/slices/cartSlices";
+import { removeFromCart, selectCartItems } from "../../redux/slices/cartSlices";
 import QuantityCounter from "../../components/QuantityCounter";
+import remove_icon from "../../assets/icons/remove_icon.svg";
 
-function CartItems() {
+function Cart() {
+  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-
   const [count, setCount] = useState(1);
+  const [quantities, setQuantities] = useState({});
 
-  const handleCountChange = (newCount) => {
-    setCount(newCount);
+  const handleCountChange = (id, newCount) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: newCount,
+    }));
+  };
+
+  const handleRemoveItem = (id) => {
+    dispatch(removeFromCart(id));
+    setQuantities((prevQuantities) => {
+      const newQuantities = { ...prevQuantities };
+      delete newQuantities[id]; // Șterge cantitatea pentru produsul eliminat
+      return newQuantities;
+    });
   };
 
   return (
@@ -41,20 +55,29 @@ function CartItems() {
 
             return (
               <div key={id} className={styles.cart_item}>
-                <div>
-                  <img
-                    src={`http://localhost:3333${image}`}
-                    alt={title}
-                    className={styles.cart_image}
-                  />
-                </div>
+                <img
+                  src={`http://localhost:3333${image}`}
+                  alt={title}
+                  className={styles.cart_image}
+                />
 
                 <div className={styles.cart_details}>
-                  <div>
+                  <div className={styles.cart_title_icon}>
                     <h4 className={styles.cart_title}>{title}</h4>
+                    <img
+                      src={remove_icon}
+                      alt="Remove icon"
+                      className={styles.remove_icon}
+                      onClick={() => handleRemoveItem(id)}
+                    />
                   </div>
-                  <div className={styles.cart_price}>
-                    <QuantityCounter onCountChange={handleCountChange} />
+
+                  <div className={styles.cart_info}>
+                    <QuantityCounter
+                      onCountChange={(newCount) =>
+                        handleCountChange(id, newCount)
+                      }
+                    />
                     <div className={styles.price_container}>
                       <p className={styles.price}>{price}$</p>
                       {discont_price != null && (
@@ -74,4 +97,4 @@ function CartItems() {
   );
 }
 
-export default CartItems;
+export default Cart;
