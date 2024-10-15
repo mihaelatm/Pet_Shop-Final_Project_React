@@ -109,3 +109,10 @@
 .action_button:hover {
   background-color: rgba(255, 255, 255, 1);
 }
+
+.added_button {
+  background-color: #fff !important;
+  color: #282828 !important;
+  transition: background-color 0.3s ease;
+  border: 1px solid #282828;
+}

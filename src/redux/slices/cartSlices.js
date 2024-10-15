@@ -23,11 +23,14 @@ const cartSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload);
       saveCartItemsToLocalStorage(state.items);
     },
+    clearCartItems(state) {
+      state.items = [];
+      saveCartItemsToLocalStorage(state.items); // Salvează starea goală în localStorage
+    },
   },
 });
 
-// Selector pentru a obține produsele din coș
 export const selectCartItems = (state) => state.cart.items;
 export const selectTotalItems = (state) => state.cart.items.length;
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCartItems } = cartSlice.actions; // Adaugă clearCartItems
 export default cartSlice.reducer;

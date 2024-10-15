@@ -9,7 +9,7 @@ function Banner() {
           Amazing Discounts <br /> on Pets Products!
         </h1>
 
-        <ButtonLink text="Check Out" width="218px" to="/discounts" />
+        <ButtonLink text="Check Out" width="218px" to="/sales" />
       </div>
     </section>
   );

@@ -4,13 +4,15 @@ import Filter from "../../components/Filter";
 import LinksBtn from "../../ui/LinksBtn";
 import useFetchData from "../../utils/useFetchData";
 import { Link } from "react-router-dom";
-import AddToCartButton from "../../ui/addToCartButton";
+import AddToCartButton from "../../ui/addToCardButton";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlices";
 
 function CategoryProducts() {
   const [filteredItems, setFilteredItems] = useState([]);
   const [hoveredItemId, setHoveredItemId] = useState(null);
+  const [addedItems, setAddedItems] = useState({});
+
   const dispatch = useDispatch();
 
   const {
@@ -30,6 +32,11 @@ function CategoryProducts() {
   const handleAddToCart = (id, image, title, discont_price, price) => {
     const product = { id, image, title, discont_price, price };
     dispatch(addToCart(product));
+    setAddedItems((prev) => ({ ...prev, [id]: true }));
+
+    setTimeout(() => {
+      setAddedItems((prev) => ({ ...prev, [id]: false }));
+    }, 1000);
   };
 
   return (
@@ -78,6 +85,8 @@ function CategoryProducts() {
                     onClick={() =>
                       handleAddToCart(id, image, title, discont_price, price)
                     }
+                    name={addedItems[id] ? "Added" : "Add to cart"}
+                    className={addedItems[id] ? styles.added_button : ""}
                     style={{
                       position: "absolute",
                       bottom: "16px",

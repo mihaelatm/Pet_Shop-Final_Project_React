@@ -18,7 +18,6 @@
 }
 
 .product_image {
-  width: 780px;
   height: 572px;
   position: relative;
 }
@@ -80,7 +79,13 @@
 
 .quantity_container {
   display: flex;
-  gap: 60px;
+  gap: 156px;
   align-items: center;
   padding-bottom: 32px;
+}
+
+.button_added {
+  background-color: #fff;
+  color: #282828;
+  border: 1px solid #282828;
 }

@@ -3,16 +3,18 @@ import InputEmail from "../../ui/inputEmail";
 import InputName from "../../ui/inputName";
 import InputPhone from "../../ui/inputPhone";
 import styles from "./styles.module.css";
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
+import CustomModal from "../CustomModal";
+import { useDispatch } from "react-redux";
+import { clearCartItems } from "../../redux/slices/cartSlices";
 
-function FormDiscount() {
+function CartForm() {
   const [form] = Form.useForm();
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch(); // Initializează useDispatch
 
   const onFinish = async (values) => {
-    console.log("Received values from form: ", values);
-
     try {
       const response = await axios.post("http://localhost:3333/sale/send", {
         name: values.name,
@@ -20,30 +22,36 @@ function FormDiscount() {
         phone: values.phone,
       });
 
+      console.log("Response:", response);
+
       if (response.status === 200) {
         form.resetFields();
-        setIsSubmitted(true);
+        setIsModalOpen(true);
       }
     } catch (error) {
       console.error("Error submitting form: ", error);
     }
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    dispatch(clearCartItems());
+  };
+
   return (
-    <Form form={form} onFinish={onFinish} className={styles.form}>
-      <div className={styles.form_content}>
+    <>
+      <Form form={form} onFinish={onFinish} className={styles.form}>
         <InputName className={styles.input_cart} />
         <InputPhone className={styles.input_cart} />
         <InputEmail className={styles.input_cart} />
-      </div>
-      <button
-        className={`${styles.button} ${isSubmitted ? styles.submitted : ""}`}
-        disabled={isSubmitted}
-      >
-        {isSubmitted ? "Request submitted" : "Get a discount"}
-      </button>
-    </Form>
+        <button type="submit" className={styles.button}>
+          Order
+        </button>
+      </Form>
+
+      <CustomModal open={isModalOpen} onClose={handleCloseModal} />
+    </>
   );
 }
 
-export default FormDiscount;
+export default CartForm;

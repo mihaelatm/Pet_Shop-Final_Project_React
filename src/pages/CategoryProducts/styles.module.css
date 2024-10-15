@@ -80,6 +80,7 @@
 .discount_percentage {
   position: absolute;
   top: 16px;
+  right: 16px;
   background-color: #0d50ff;
   border-radius: 6px;
   padding: 4px 8px;
@@ -89,4 +90,11 @@
   letter-spacing: 0.03em;
   color: #fff;
   animation: heartbeat 1s infinite;
+}
+
+.added_button {
+  background-color: #fff !important;
+  color: #282828 !important;
+  transition: background-color 0.3s ease;
+  border: 1px solid #282828;
 }

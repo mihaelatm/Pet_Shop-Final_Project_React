@@ -6,11 +6,11 @@ import Item from "../../components/Item";
 import { removeFromCart, selectCartItems } from "../../redux/slices/cartSlices";
 import QuantityCounter from "../../components/QuantityCounter";
 import remove_icon from "../../assets/icons/remove_icon.svg";
+import CartTotal from "../../components/CartTotal";
 
 function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const [count, setCount] = useState(1);
   const [quantities, setQuantities] = useState({});
 
   const handleCountChange = (id, newCount) => {
@@ -24,10 +24,20 @@ function Cart() {
     dispatch(removeFromCart(id));
     setQuantities((prevQuantities) => {
       const newQuantities = { ...prevQuantities };
-      delete newQuantities[id]; // Șterge cantitatea pentru produsul eliminat
+      delete newQuantities[id];
       return newQuantities;
     });
   };
+
+  const itemCount = cartItems.reduce((total, item) => {
+    const quantity = quantities[item.id] || 1; // Obține cantitatea curentă
+    return total + quantity;
+  }, 0);
+
+  const totalPrice = cartItems.reduce((total, item) => {
+    const quantity = quantities[item.id] || 1; // Obține cantitatea curentă
+    return total + item.price * quantity;
+  }, 0);
 
   return (
     <section className={styles.cart_content}>
@@ -49,48 +59,54 @@ function Cart() {
           />
         </div>
       ) : (
-        <div className={styles.cart_list}>
-          {cartItems.map((item) => {
-            const { id, title, image, price, discont_price } = item;
+        <div className={styles.cart_wrapper}>
+          <div className={styles.cart_list}>
+            {cartItems.map((item) => {
+              const { id, title, image, price, discont_price } = item;
+              const currentQuantity = quantities[id] || 1; // Obține cantitatea curentă
 
-            return (
-              <div key={id} className={styles.cart_item}>
-                <img
-                  src={`http://localhost:3333${image}`}
-                  alt={title}
-                  className={styles.cart_image}
-                />
-
-                <div className={styles.cart_details}>
-                  <div className={styles.cart_title_icon}>
-                    <h4 className={styles.cart_title}>{title}</h4>
-                    <img
-                      src={remove_icon}
-                      alt="Remove icon"
-                      className={styles.remove_icon}
-                      onClick={() => handleRemoveItem(id)}
-                    />
-                  </div>
-
-                  <div className={styles.cart_info}>
-                    <QuantityCounter
-                      onCountChange={(newCount) =>
-                        handleCountChange(id, newCount)
-                      }
-                    />
-                    <div className={styles.price_container}>
-                      <p className={styles.price}>{price}$</p>
-                      {discont_price != null && (
-                        <p className={styles.discount_price}>
-                          {discont_price}$
-                        </p>
-                      )}
+              return (
+                <div key={id} className={styles.cart_item}>
+                  <img
+                    src={`http://localhost:3333${image}`}
+                    alt={title}
+                    className={styles.cart_image}
+                  />
+                  <div className={styles.cart_details}>
+                    <div className={styles.cart_title_icon}>
+                      <h4 className={styles.cart_title}>{title}</h4>
+                      <img
+                        src={remove_icon}
+                        alt="Remove icon"
+                        className={styles.remove_icon}
+                        onClick={() => handleRemoveItem(id)}
+                      />
+                    </div>
+                    <div className={styles.cart_info}>
+                      <QuantityCounter
+                        value={currentQuantity} // Aici se trimite cantitatea curentă
+                        onCountChange={(newCount) =>
+                          handleCountChange(id, newCount)
+                        }
+                      />
+                      <div className={styles.price_container}>
+                        <p className={styles.price}>{price}$</p>
+                        {discont_price != null && (
+                          <p className={styles.discount_price}>
+                            {discont_price}$
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          <div className={styles.cart_total}>
+            <CartTotal itemCount={itemCount} totalPrice={totalPrice} />
+          </div>
         </div>
       )}
     </section>

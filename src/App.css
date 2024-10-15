@@ -10,7 +10,7 @@ body {
 }
 
 .App {
-  max-width: 1540px;
+  max-width: 1920px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

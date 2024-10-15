@@ -1,7 +1,7 @@
 import { Form, Input } from "antd";
 import styles from "./styles.module.css";
 
-function InputEmail() {
+function InputEmail({ className }) {
   return (
     <Form.Item
       name="email"
@@ -11,7 +11,7 @@ function InputEmail() {
       ]}
       className={styles.form_item}
     >
-      <Input placeholder="Email" className={styles.input_form} />
+      <Input className={className} placeholder="Email" />
     </Form.Item>
   );
 }

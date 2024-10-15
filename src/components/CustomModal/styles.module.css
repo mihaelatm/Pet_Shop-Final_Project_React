@@ -1,0 +1,25 @@
+.modal_content {
+  padding: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.modal_content {
+  border-bottom: none;
+}
+
+.modal_title {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.modal_text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.1;
+  max-width: 424px;
+}

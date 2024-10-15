@@ -1,7 +1,7 @@
 import { Form, Input } from "antd";
 import styles from "./styles.module.css";
 
-function InputPhone() {
+function InputPhone({ className }) {
   return (
     <Form.Item
       name="phone"
@@ -10,7 +10,7 @@ function InputPhone() {
         { min: 6, message: "Phone number must be at least 10 digits!" },
       ]}
     >
-      <Input placeholder="Phone number" className={styles.input_form} />
+      <Input className={className} placeholder="Phone number" />
     </Form.Item>
   );
 }

@@ -5,7 +5,7 @@ import { addToCart } from "../../redux/slices/cartSlices";
 import useFetchData from "../../utils/useFetchData";
 import styles from "./styles.module.css";
 import LinksBtn from "../../ui/LinksBtn";
-import AddToCartButton from "../../ui/addToCartButton";
+import AddToCartButton from "../../ui/addToCardButton";
 import QuantityCounter from "../../components/QuantityCounter";
 import ProductDescription from "../../components/ProductDescription";
 
@@ -18,6 +18,7 @@ const Product = () => {
     error,
   } = useFetchData("http://localhost:3333/products/all");
   const [count, setCount] = useState(1);
+  const [isAdded, setIsAdded] = useState(false);
 
   const foundProduct = product.find((item) => item.id === parseInt(id));
 
@@ -34,7 +35,12 @@ const Product = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ id, image, title, discont_price, price }));
+    setIsAdded(true);
   };
+
+  setTimeout(() => {
+    setIsAdded(false);
+  }, 1500);
 
   const handleCountChange = (newCount) => {
     setCount(newCount);
@@ -78,7 +84,10 @@ const Product = () => {
             <QuantityCounter onCountChange={handleCountChange} />
             <AddToCartButton
               onClick={handleAddToCart}
-              className={styles.button_add_to_cart}
+              className={`${styles.button_add_to_cart} ${
+                isAdded ? styles.button_added : ""
+              }`}
+              name={isAdded ? "Added" : "Add to cart"}
             />
           </div>
 
