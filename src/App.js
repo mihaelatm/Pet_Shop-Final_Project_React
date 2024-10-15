@@ -9,6 +9,7 @@ import DiscountItems from "./pages/DiscountItems";
 import AllProducts from "./pages/AllProducts";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -22,8 +23,7 @@ function App() {
         <Route path="/products/all" element={<AllProducts />} />
         <Route path="/sales" element={<DiscountItems />} />
         <Route path="/cart" element={<Cart />} />
-
-        {/* <Route path="*" element={<ErrorPage />} /> */}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
 
       <Footer />
