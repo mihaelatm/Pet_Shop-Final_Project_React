@@ -19,7 +19,6 @@ const Filter = ({ items, setFilteredItems }) => {
       return withinPriceRange && hasDiscount;
     });
 
-    // Aplică sortarea
     switch (sortOrder) {
       case "priceAsc":
         filtered.sort((a, b) => a.price - b.price);

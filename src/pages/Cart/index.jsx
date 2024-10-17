@@ -30,12 +30,12 @@ function Cart() {
   };
 
   const itemCount = cartItems.reduce((total, item) => {
-    const quantity = quantities[item.id] || 1; // Obține cantitatea curentă
+    const quantity = quantities[item.id] || 1;
     return total + quantity;
   }, 0);
 
   const totalPrice = cartItems.reduce((total, item) => {
-    const quantity = quantities[item.id] || 1; // Obține cantitatea curentă
+    const quantity = quantities[item.id] || 1;
     return total + item.price * quantity;
   }, 0);
 

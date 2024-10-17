@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
 const QuantityCounter = ({ value, onCountChange }) => {
-  const [count, setCount] = useState(value); // Initializează count cu valoarea primită
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
-    setCount(value); // Actualizează count dacă valoarea se schimbă din exterior
+    setCount(value);
   }, [value]);
 
   const incrementCount = () => {
